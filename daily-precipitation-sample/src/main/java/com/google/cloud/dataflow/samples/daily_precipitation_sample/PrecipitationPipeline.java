@@ -24,13 +24,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// NOTE: To prevent a classpath overflow exception when running on Compute Engine
-//       use "blaze run PrecipPipe_deploy.jar ..." instead of "PrecipPipe"
-
-// ALSO NOTE: Dataflow cannot handle all data files in the initial read,
-//            so uploads may have to be done month by month
-//            (even a year of data is too much).
-
 /**
  * Dataflow pipeline for NOAA precipitation data in a specified date range.
  * Data source can be found at http://water.weather.gov/precip/download.php
@@ -216,7 +209,7 @@ public class PrecipitationPipeline implements Serializable {
 
     };
   }
-
+  
   private SerializableFunction<KV<String, String>, Boolean> getFilterPredicate() {
     return new SerializableFunction<KV<String, String>, Boolean>() {
 

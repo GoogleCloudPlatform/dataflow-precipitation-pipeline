@@ -16,8 +16,6 @@ public class PrecipitationRow {
   /**
    * Represents the properties of this row of precipitation data.
    */
-  // NOTE: These names must be capitalized to match up correctly with JSON key names.
-  // This will allow GSON to load the correct values into a PrecipitationRow object.
   public static class Prop {
     @SerializedName("Id")
     public double id; // unique point ID

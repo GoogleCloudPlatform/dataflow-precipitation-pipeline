@@ -64,7 +64,7 @@ public class ReadDataWithFileName extends
     Pipeline pipeline = input.getPipeline();
 
     // Create one TextIO.Read transform for each data file
-    // and add its output to a PCollectionList
+    // and add its output to a PCollectionList.
     PCollectionList<KV<String, String>> filesToLines = PCollectionList.empty(pipeline);
 
     for (final String fileLocation : files) {
