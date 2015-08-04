@@ -37,20 +37,20 @@ public interface PrecipitationOptions extends PipelineOptions {
   void setAppend(boolean value);
 
   @Description("Existing Google Cloud project to work with.")
-  @Default.String("bqpipelines")
+  @Default.String("myProject")
   @Validation.Required
   String getProject();
   void setProject(String value);
 
   @Description("GCS bucket where precipitation data files are stored.")
-  @Default.String("jsv-test")
+  @Default.String("myBucket")
   @Validation.Required
   String getBucket();
   void setBucket(String value);
 
   @Description("Fully-qualified BigQuery table to update. "
                + "Should be in the format \"project:dataset.table\".")
-  @Default.String("bqpipelines:weather.us_precipitation")
+  @Default.String("myProject:weather.us_precipitation")
   @Validation.Required
   String getTable();
   void setTable(String value);
