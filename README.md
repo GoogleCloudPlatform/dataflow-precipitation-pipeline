@@ -15,7 +15,7 @@ The BigQuery US Precipitation dataset is also continuously updated using this pi
 
 If you do not already have Google cloud credentials setup, you'll need to install gcloud and run the command:
 
-   $ gcloud auth login
+    $ gcloud auth login
 
 This pipeline uses the default Google credentials.
 You can find more about setting up Google credentials at https://developers.google.com/identity/protocols/application-default-credentials 
@@ -35,7 +35,7 @@ Include the "--help=PrecipitationOptions" flag for a list of pipeline-specific o
 ## License
 
 This library is licensed under Apache 2.0. Full license text is
-available in [LICENSE.txt](LICENSE.txt).
+available in [LICENSE](LICENSE.txt).
 
 ## Contributing
 
