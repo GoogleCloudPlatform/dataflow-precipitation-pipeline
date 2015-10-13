@@ -46,4 +46,6 @@ See [CONTRIBUTING](CONTRIBUTING.md).
 For support on BigQuery and Dataflow, please submit questions tagged with
 [`google-bigquery`](http://stackoverflow.com/questions/tagged/google-bigquery)
 and [`google-cloud-dataflow`](http://stackoverflow.com/questions/tagged/google-cloud-dataflow)
-on StackOverflow. Please [report bugs at the project on Github](https://github.com/GoogleCloudPlatform/dataflow-precipitation-pipeline/issues).
+on StackOverflow.
+
+For issues, please [submit issues](https://github.com/GoogleCloudPlatform/dataflow-precipitation-pipeline/issues) here on this project page.
