@@ -43,6 +43,7 @@ See [CONTRIBUTING](CONTRIBUTING.md).
 
 ## Support
 
-Please [report bugs at the project on Github](https://github.com/google/google-api-ruby-client/issues). Don't
-hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs
-on [StackOverflow](http://stackoverflow.com).
+For support on BigQuery and Dataflow, please submit questions tagged with
+[`google-bigquery`](http://stackoverflow.com/questions/tagged/google-bigquery)
+and [`google-cloud-dataflow`](http://stackoverflow.com/questions/tagged/google-cloud-dataflow)
+on StackOverflow. Please [report bugs at the project on Github](https://github.com/GoogleCloudPlatform/dataflow-precipitation-pipeline/issues).
