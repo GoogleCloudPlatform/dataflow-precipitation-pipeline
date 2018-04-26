@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Google Inc.
+ * Copyright (C) 2015-2018 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,15 +16,17 @@
 
 package com.google.cloud.dataflow.samples.daily_precipitation_sample;
 
-import com.google.cloud.dataflow.sdk.options.Default;
-import com.google.cloud.dataflow.sdk.options.Description;
-import com.google.cloud.dataflow.sdk.options.PipelineOptions;
-import com.google.cloud.dataflow.sdk.options.Validation;
+import org.apache.beam.sdk.extensions.gcp.options.GcpOptions.DefaultProjectFactory;
+import org.apache.beam.sdk.options.Default;
+import org.apache.beam.sdk.options.Description;
+import org.apache.beam.sdk.options.PipelineOptions;
+import org.apache.beam.sdk.options.Validation;
+import org.apache.beam.sdk.options.ValueProvider;
 
 /**
  * Extra options for {@link PrecipitationPipeline}.
  *
- * @author jsvangeffen
+ * @author stephanmeyn@google.com
  */
 public interface PrecipitationOptions extends PipelineOptions {
 
@@ -37,17 +39,21 @@ public interface PrecipitationOptions extends PipelineOptions {
   void setAppend(boolean value);
 
   @Description("Existing Google Cloud project to work with.")
-  @Default.String("myProject")
+  @Default.InstanceFactory(DefaultProjectFactory.class)
   @Validation.Required
   String getProject();
   void setProject(String value);
-
-  @Description("GCS bucket where precipitation data files are stored.")
-  @Default.String("myBucket")
+  
+  @Description("File pattern used to match files. Ex. gs://sub/dir/*.json")
   @Validation.Required
-  String getBucket();
-  void setBucket(String value);
+  String getInputFilePattern();
+  void setInputFilePattern(String value);
 
+  @Validation.Required
+  @Description("Temporary directory for BigQuery loading process")
+  ValueProvider<String> getBigQueryLoadingTemporaryDirectory();
+  void setBigQueryLoadingTemporaryDirectory(ValueProvider<String> directory);
+  
   @Description("Fully-qualified BigQuery table to update. "
                + "Should be in the format \"project:dataset.table\".")
   @Default.String("myProject:weather.us_precipitation")
@@ -55,20 +61,4 @@ public interface PrecipitationOptions extends PipelineOptions {
   String getTable();
   void setTable(String value);
 
-  @Description("First day of precipitation data to upload. "
-               + "Should be in the format \"YYYYMMD\".\n"
-               + "If left blank, all data up to the end date will be included")
-  @Default.String("")
-  @Validation.Required
-  String getStartDate();
-  void setStartDate(String value);
-
-  @Description("Last day of precipitation data to upload. "
-               + "Should be in the format \"YYYYMMD\".\n"
-               + "If left blank, all data after the start date will "
-               + "be included")
-  @Default.String("")
-  @Validation.Required
-  String getEndDate();
-  void setEndDate(String value);
 }
