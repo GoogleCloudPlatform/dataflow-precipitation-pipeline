@@ -26,7 +26,7 @@ import org.apache.beam.sdk.options.ValueProvider;
 /**
  * Extra options for {@link PrecipitationPipeline}.
  *
- * @author jsvangeffen, stephanmeyn
+ * @author stephanmeyn@google.com
  */
 public interface PrecipitationOptions extends PipelineOptions {
 

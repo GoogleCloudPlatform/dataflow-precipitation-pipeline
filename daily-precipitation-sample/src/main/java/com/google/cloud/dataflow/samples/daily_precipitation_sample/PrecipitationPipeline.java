@@ -31,8 +31,9 @@ import org.apache.beam.sdk.transforms.ParDo;
 import com.google.gdata.util.common.logging.FormattingLogger;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 /**
  * Dataflow pipeline for NOAA precipitation data in a specified date range.
@@ -51,7 +52,7 @@ import java.util.Date;
  * <p>Run {@code java -jar PrecipPipe.jar --help} for more information.
  * <br>Include the "--help=PrecipitationOptions" flag for a list of pipeline-specific options.
  *
- * @authors jsvangeffen, stephanmeyn
+ * @authors  stephanmeyn@google.com
  */
 public class PrecipitationPipeline implements Serializable {
 
@@ -151,7 +152,8 @@ public class PrecipitationPipeline implements Serializable {
 
   }
 
-  private DoFn<PrecipitationDataFile.PrecipitationRecord, TableRow> getAppendDoFn() {
+  @SuppressWarnings("serial")
+private DoFn<PrecipitationDataFile.PrecipitationRecord, TableRow> getAppendDoFn() {
     return new DoFn< PrecipitationDataFile.PrecipitationRecord, TableRow>() {
 
         @ProcessElement
@@ -160,11 +162,12 @@ public class PrecipitationPipeline implements Serializable {
           PrecipitationDataFile.PrecipitationRecord dataRow = c.element();
  
           TableRow outputRow = new TableRow();
-          SimpleDateFormat fmt = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss");
+          DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss");
+          ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
           outputRow.put("Date", dataRow.date);
           outputRow.put("Station", dataRow.station); 
           outputRow.put("Precip", dataRow.value);
-          outputRow.put("DateAdded", fmt.format(new Date()));
+          outputRow.put("DateAdded",  now.format(formatter));
 
           c.output(outputRow);
         }

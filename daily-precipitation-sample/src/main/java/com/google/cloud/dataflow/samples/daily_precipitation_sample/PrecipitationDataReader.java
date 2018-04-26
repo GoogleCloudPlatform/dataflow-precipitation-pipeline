@@ -16,7 +16,7 @@ import java.nio.channels.ReadableByteChannel;
  * DoFn to process a single data file. 
  * Input: a file name
  * output: the content of the file
- * @author stephanmeyn
+ * @author stephanmeyn@google.com
  *
  */
 public class PrecipitationDataReader extends DoFn<MatchResult.Metadata, String>{

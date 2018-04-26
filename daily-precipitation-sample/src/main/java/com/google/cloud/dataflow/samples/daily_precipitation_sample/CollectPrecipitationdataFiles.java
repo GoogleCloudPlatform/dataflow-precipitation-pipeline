@@ -32,7 +32,7 @@ import org.apache.beam.sdk.extensions.jackson.ParseJsons;
 /**
  *  A PTransform that returns records that represent  single data download files 
  *
- * @author Stephanmeyn
+ * @author Stephanmeyn@google.com
  */
 public class CollectPrecipitationdataFiles extends
     PTransform<PInput, PCollection< PrecipitationDataFile.PrecipitationRecord>> {

@@ -2,7 +2,7 @@ package com.google.cloud.dataflow.samples.daily_precipitation_sample;
 
 
 /**
- * @author stephanmeyn
+ * @author stephanmeyn@google.com
  *
  * Object representation of a data download from noaa.
  * Created for GSON, matches JSON file representation.
